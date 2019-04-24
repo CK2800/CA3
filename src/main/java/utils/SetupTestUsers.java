@@ -3,6 +3,7 @@ package utils;
 import entity.Role;
 import entity.User;
 import javax.persistence.EntityManager;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class SetupTestUsers {
 
@@ -16,26 +17,27 @@ public class SetupTestUsers {
     
     //throw new UnsupportedOperationException("REMOVE THIS LINE, WHEN YOU HAVE READ WARNING");
     
-    em.getTransaction().begin();
-    Role userRole = new Role("user");
-    Role adminRole = new Role("admin");
-    User user = new User("user", "test");
-    user.addRole(userRole);
-    User admin = new User("admin", "test");
-    admin.addRole(adminRole);
-    User both = new User("user_admin", "test");
-    both.addRole(userRole);
-    both.addRole(adminRole);
-    em.persist(userRole);
-    em.persist(adminRole);
-    em.persist(user);
-    em.persist(admin);
-    em.persist(both);
-    em.getTransaction().commit();
-    System.out.println("PW: " + user.getUserPass());
-    System.out.println("Testing user with OK password: " + user.verifyPassword("test"));
-    System.out.println("Testing user with wrong password: " + user.verifyPassword("test1"));
-    System.out.println("Created TEST Users");
+//    em.getTransaction().begin();
+//    Role userRole = new Role("user");
+//    Role adminRole = new Role("admin");    
+//    User user = new User("user", "");
+//    user.addRole(userRole);    
+//    User admin = new User("admin", "");
+//    admin.addRole(adminRole);
+//    User both = new User("user_admin", "");
+//    both.addRole(userRole);
+//    both.addRole(adminRole);
+//    em.persist(userRole);
+//    em.persist(adminRole);
+//    em.persist(user);
+//    em.persist(admin);
+//    em.persist(both);
+//    em.getTransaction().commit();
+//    System.out.println("PW: " + user.getUserPass());
+//    System.out.println("Testing user with OK password: " + user.verifyPassword("korrektpassword"));
+//    System.out.println("Testing user with wrong password: " + user.verifyPassword("blablabla"));
+//    System.out.println("Created TEST Users");
+    System.out.println("OBS: For at oprette test users, skal der tilrettes i denne fil !");
    
   }
 

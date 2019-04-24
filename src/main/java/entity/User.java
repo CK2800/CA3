@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.mindrot.jbcrypt.BCrypt;
 
 @Entity
 @Table(name = "users")
@@ -51,12 +52,14 @@ public class User implements Serializable {
 
   //TODO Change when password is hashed
    public boolean verifyPassword(String pw){
-        return(pw.equals(userPass));
+        return(BCrypt.checkpw(pw, userPass));
+//        return(pw.equals(userPass));
     }
 
   public User(String userName, String userPass) {
     this.userName = userName;
- this.userPass = userPass;
+    this.setUserPass(userPass); // ok i konstruktøren, da SetUserPass() er final.
+// this.userPass = userPass;
   }
 
   public String getUserName() {
@@ -71,8 +74,15 @@ public class User implements Serializable {
     return this.userPass;
   }
 
-  public void setUserPass(String userPass) {
-    this.userPass = userPass;
+  /**
+   * Hasher password og gemmer det på User objektet.
+   * Kan ikke overrides, kaldes i konstruktøren.
+   * @param userPass Password i plain text.
+   */
+  final public void setUserPass(String userPass) {
+      String salt = BCrypt.gensalt();
+      this.userPass = BCrypt.hashpw(userPass, salt);
+//    this.userPass = userPass;
   }
 
   public List<Role> getRoleList() {
