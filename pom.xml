@@ -13,9 +13,10 @@
     <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     
-    <remote.server>https://www.sem3.mydemos.dk/manager/text</remote.server>
+    <remote.server>https://www.kramath.dk/manager/text</remote.server>
+    
         
-    <!--<tomcat.version>7.0.93</tomcat.version>-->
+    <!--<tomcat.version>8.0.27</tomcat.version>-->
     <tomcat.version>8.5.40</tomcat.version>
   </properties>
     
@@ -40,8 +41,8 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-<!--      <version>8.0.15</version>-->
-      <version>5.1.39</version>
+      <version>8.0.12</version>
+      <!--<version>5.1.39</version>-->
     </dependency>
     <dependency>
       <groupId>org.mindrot</groupId>

@@ -42,6 +42,7 @@ public class User implements Serializable {
     List<String> rolesAsStrings = new ArrayList();
     for (Role role : roleList) {
       rolesAsStrings.add(role.getRoleName());
+        System.out.println("role til user:" + role.getRoleName());
     }
     return rolesAsStrings;
   }

@@ -40,7 +40,9 @@ public class DemoResource {
     EntityManager em = PuSelector.getEntityManagerFactory("pu").createEntityManager();
     try{
       List<User> users = em.createQuery("select user from User user").getResultList();
+      
       return "["+users.size()+"]";
+        
     } finally {
       em.close();
     }
@@ -50,7 +52,7 @@ public class DemoResource {
   @GET
   @Produces(MediaType.APPLICATION_JSON)
   @Path("user")
-  @RolesAllowed("user")
+  @RolesAllowed("user")  
   public String getFromUser() {
     String thisuser = securityContext.getUserPrincipal().getName();
     return "{\"msg\": \"Hello to User: " + thisuser + "\"}";

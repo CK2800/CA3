@@ -10,7 +10,7 @@
     <class>entity.User</class>
     <properties>
       <!-- DONT ADD ANYTHING HERE
-      This part will come from one of the pu_xxxx.properties files -->
+      This part will come from one of the pu_xxxx.properties files -->      
     </properties>
   </persistence-unit>
 </persistence>
