@@ -34,10 +34,10 @@ public class SetupTestUsers {
 //    em.persist(both);
 //    em.getTransaction().commit();
 //    System.out.println("PW: " + user.getUserPass());
-//    System.out.println("Testing user with OK password: " + user.verifyPassword("korrektpassword"));
+//    System.out.println("Testing user with OK password: " + user.verifyPassword(""));
 //    System.out.println("Testing user with wrong password: " + user.verifyPassword("blablabla"));
 //    System.out.println("Created TEST Users");
-    System.out.println("OBS: For at oprette test users, skal der tilrettes i denne fil !");
+    System.out.println("OBS: For at oprette test users, skal der angives passwords (4 steder) i denne fil !");
    
   }
 
