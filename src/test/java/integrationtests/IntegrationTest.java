@@ -6,6 +6,7 @@ import static io.restassured.RestAssured.*;
 import io.restassured.http.ContentType;
 import io.restassured.parsing.Parser;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.List;
 import static javafx.scene.input.KeyCode.L;
 import javax.servlet.ServletException;
@@ -171,5 +172,13 @@ public class IntegrationTest
                 .when()
                 .get("/api/info/user").then()
                 .statusCode(403);
+    }
+    
+    @Test 
+    public void fetchFromApisAsyncOK()
+    {
+        // Arrange
+        
+        given().contentType("application/json").when().get("/api/info/fetch").then().statusCode(200);
     }
 }
