@@ -1,6 +1,7 @@
 package rest;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import entity.User;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,10 +32,10 @@ public class DemoResource
      * file name of file containing api urls.
      */
     public static String fileName = "/META-INF/externalApis.properties";
-
+    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     @Context
     private UriInfo context;
-
+    
     @Context
     SecurityContext securityContext;
 
@@ -112,6 +113,8 @@ public class DemoResource
         try
         {
             // Iterate through futures to assemble results.
+            // NOTE: future.get() is blocking, since it waits for the future to resolve. 
+            // It is ok to wait here, since every callable is running in parallel at this point.            
             for(Future<String> future : futures)            
             {
                 result.add(future.get());
@@ -124,6 +127,8 @@ public class DemoResource
             e.printStackTrace();
         }
         
-        return new Gson().toJson(result);
+//        return new Gson().toJson(result);
+            return gson.toJson(result);
+
     }
 }
