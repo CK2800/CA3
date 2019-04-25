@@ -172,34 +172,4 @@ public class IntegrationTest
                 .get("/api/info/user").then()
                 .statusCode(403);
     }
-    
-    @Test
-    public void propertiesRead()
-    {
-        // Arrange
-        List<String> result;
-        String fileName = DemoResource.fileName;
-        
-        // Act.
-        result = URLReader.readUrls(fileName);
-        
-        // Assert.
-        Assert.assertTrue(result.size() > 0);       
-    }
-    
-    // Q&D - we should expect an Exception thrown, due to lack of time, we check for null instead.
-    @Test
-    public void propertiesNotRead()
-    {
-        // Arrange
-        List<String> result;
-        String fileName = "blablabla";
-        
-        // Act.
-        result = URLReader.readUrls(fileName);
-        
-        // Assert.
-        Assert.assertTrue(result == null);
-    }
-
 }
