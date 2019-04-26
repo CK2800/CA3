@@ -102,6 +102,7 @@ public class DemoResource
         List<String> result = new ArrayList();
         // Read in urls from external resource.
         ArrayList<String> urls = URLReader.readUrls(DemoResource.fileName);
+        long end, total = 0, start = System.currentTimeMillis();
         // Iterate through urls, and call each url in sequence.
         for(String url : urls)
         {           
@@ -115,7 +116,14 @@ public class DemoResource
                 // but due to lack of time, we push the message into the result.
                 result.add(e.getMessage());
             }            
+            finally
+            {
+                end = System.currentTimeMillis();
+                total += (end - start);
+            }            
         }
+//        System.out.println("Execution time sequence: " + total);
+        result.add(0, "Fetch time sequential: " + total + " ms.");
         if (result.size() > 0)
             return gson.toJson(result);
         else
@@ -129,7 +137,7 @@ public class DemoResource
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("fetch2") 
-    @RolesAllowed("user")
+    @RolesAllowed({"user", "admin"})
     public String fetchFromApisAsync()
     {
         // Create executor service
@@ -139,7 +147,13 @@ public class DemoResource
         // Create collection to hold result.
         List<String> result = new ArrayList();
         
+        long start, end;
+        
         ArrayList<String> urls = URLReader.readUrls(DemoResource.fileName);
+        
+        // Time the parallel loading of urls.
+        start = System.currentTimeMillis();
+        
         // Iterate through urls, create anonymous callable, add it to executorservice and futures.
         for(String url : urls)
         {           
@@ -162,6 +176,13 @@ public class DemoResource
             result.add(e.getMessage());
             e.printStackTrace();
         }
+        finally
+        {        
+            end = System.currentTimeMillis();
+//            System.out.println("Execution time parallel: " + (end - start));
+            result.add(0, "Fetch time async: " + (end-start) + " ms.");
+        }
+        
         
 //        return new Gson().toJson(result);
             if (result.size() > 0)
