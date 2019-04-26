@@ -133,7 +133,8 @@ public class IntegrationTest
                 .contentType("application/json")
                 .header("x-access-token", securityToken)
                 .when()
-                .get("/api/info/fetch2").then()
+//                .get("/api/info/fetch2").then()
+                .get("/api/info/fetch").then()
                 .statusCode(200)
                 ;//.body("msg", not(""));
     }

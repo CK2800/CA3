@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import javax.annotation.security.PermitAll;
 import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 
@@ -93,10 +94,10 @@ public class DemoResource
      * 
      * @return 
      */
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("fetch")
-    public String fetchFromApis()
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("fetch")
+    protected String fetchFromApis()
     {
         // Create collection to hold result.
         List<String> result = new ArrayList();
@@ -129,16 +130,27 @@ public class DemoResource
         else
             return "";
     }
+    
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("fetch")
+    @RolesAllowed({"user", "admin"})
+    public String fetch()
+    {
+        // admins fetch asynchronously, users sequentially.
+        return securityContext.isUserInRole("admin") ? fetchFromApisAsync() : fetchFromApis(); 
+    }
     /**
      * Fetches data asynchronously from the urls specified.
      *      
      * @return JSON encoded string.
      */
-    @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    @Path("fetch2") 
+//    @GET
+//    @Produces(MediaType.APPLICATION_JSON)
+//    @Path("fetch2") 
+    
     @RolesAllowed({"user", "admin"})
-    public String fetchFromApisAsync()
+    protected String fetchFromApisAsync()
     {
         // Create executor service
         ExecutorService executorService = Executors.newCachedThreadPool();
