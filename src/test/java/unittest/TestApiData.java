@@ -65,4 +65,33 @@ public class TestApiData
         // Assert
         Assert.assertTrue(response != null);
     }    
+    
+    @Test
+    public void testFetchFromApisAsync()
+    {
+        // Arrange
+        DemoResource dr = new DemoResource();
+
+        // Act.
+        String result = dr.fetchFromApisAsync();
+
+        // Assert
+//        System.out.println("result: " + result);
+        Assert.assertTrue(result != "");
+    }
+    
+    @Test
+    public void testFetchFromApis()
+    {
+        // Arrange
+        DemoResource dr = new DemoResource();
+
+        // Act.
+        String result = dr.fetchFromApis();
+
+        // Assert
+//        System.out.println("result: " + result);
+        Assert.assertTrue(result != "");
+    }
+    
 }

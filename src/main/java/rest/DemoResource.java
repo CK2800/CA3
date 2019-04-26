@@ -97,7 +97,7 @@ public class DemoResource
 //    @GET
 //    @Produces(MediaType.APPLICATION_JSON)
 //    @Path("fetch")
-    protected String fetchFromApis()
+    public String fetchFromApis()
     {
         // Create collection to hold result.
         List<String> result = new ArrayList();
@@ -150,7 +150,7 @@ public class DemoResource
 //    @Path("fetch2") 
     
     @RolesAllowed({"user", "admin"})
-    protected String fetchFromApisAsync()
+    public String fetchFromApisAsync()
     {
         // Create executor service
         ExecutorService executorService = Executors.newCachedThreadPool();
