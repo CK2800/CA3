@@ -126,6 +126,19 @@ public class IntegrationTest
     }
 
     @Test
+    public void testRestForUserAsyncFetch()
+    {
+        login("user", "test");
+        given()
+                .contentType("application/json")
+                .header("x-access-token", securityToken)
+                .when()
+                .get("/api/info/fetch2").then()
+                .statusCode(200)
+                ;//.body("msg", not(""));
+    }
+    
+    @Test
     public void testRestForMultiRole1()
     {
         login("user_admin", "test");
@@ -174,11 +187,11 @@ public class IntegrationTest
                 .statusCode(403);
     }
     
-    @Test 
-    public void fetchFromApisAsyncOK()
-    {
-        // Arrange
-        
-        given().contentType("application/json").when().get("/api/info/fetch").then().statusCode(200);
-    }
+//    @Test 
+//    public void fetchFromApisAsyncOK()
+//    {
+//        // Arrange
+//        
+//        given().contentType("application/json").when().get("/api/info/fetch").then().statusCode(200);
+//    }
 }

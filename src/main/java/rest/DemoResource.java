@@ -18,6 +18,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
+import utils.ApiData;
 import utils.ApiDataCallable;
 import utils.PuSelector;
 import utils.URLReader;
@@ -86,6 +87,40 @@ public class DemoResource
         return "{\"msg\": \"Hello to (admin) User: " + thisuser + "\"}";
     }
     
+    
+    /**
+     * Anonymous users can only fetch data synchronously.
+     * 
+     * @return 
+     */
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("fetch")
+    public String fetchFromApis()
+    {
+        // Create collection to hold result.
+        List<String> result = new ArrayList();
+        // Read in urls from external resource.
+        ArrayList<String> urls = URLReader.readUrls(DemoResource.fileName);
+        // Iterate through urls, and call each url in sequence.
+        for(String url : urls)
+        {           
+            try
+            {
+                result.add(ApiData.getData(url));
+            }
+            catch(Exception e)
+            {
+                // Q&D each exception must be properly handled,
+                // but due to lack of time, we push the message into the result.
+                result.add(e.getMessage());
+            }            
+        }
+        if (result.size() > 0)
+            return gson.toJson(result);
+        else
+            return "";
+    }
     /**
      * Fetches data asynchronously from the urls specified.
      *      
@@ -93,7 +128,8 @@ public class DemoResource
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @Path("fetch")    
+    @Path("fetch2") 
+    @RolesAllowed("user")
     public String fetchFromApisAsync()
     {
         // Create executor service
@@ -128,7 +164,10 @@ public class DemoResource
         }
         
 //        return new Gson().toJson(result);
-            return gson.toJson(result);
+            if (result.size() > 0)
+                return gson.toJson(result);
+            else
+                return ""; // or null
 
     }
 }
