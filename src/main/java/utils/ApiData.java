@@ -43,6 +43,7 @@ public class ApiData
         if (scanner.hasNext())
             jsonResult = scanner.nextLine(); // doable, since the json result is a single line.
         scanner.close();
+//        System.out.println("JSON Received: " + jsonResult);
         return jsonResult;
     }    
 }

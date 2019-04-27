@@ -34,7 +34,7 @@ public class DemoResource
      * file name of file containing api urls.
      */
     public static String fileName = "/META-INF/externalApis.properties";
-    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//    private final Gson gson = new GsonBuilder().setPrettyPrinting().create();
     @Context
     private UriInfo context;
     
@@ -124,9 +124,9 @@ public class DemoResource
             }            
         }
 //        System.out.println("Execution time sequence: " + total);
-        result.add(0, "Fetch time sequential: " + total + " ms.");
+        result.add(0, "{\"msg\": \"Fetch time sequential: " + total + " ms.\"}");
         if (result.size() > 0)
-            return gson.toJson(result);
+            return result.toString(); //return gson.toJson(result);
         else
             return "";
     }
@@ -192,13 +192,13 @@ public class DemoResource
         {        
             end = System.currentTimeMillis();
 //            System.out.println("Execution time parallel: " + (end - start));
-            result.add(0, "Fetch time async: " + (end-start) + " ms.");
+            result.add(0, "{\"msg\": \"Fetch time async: " + (end-start) + " ms.\"}");            
         }
         
         
 //        return new Gson().toJson(result);
             if (result.size() > 0)
-                return gson.toJson(result);
+                return result.toString(); //return gson.toJson(result);
             else
                 return ""; // or null
 
