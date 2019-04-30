@@ -34,3 +34,5 @@ b: your user name and password for the MySql server.
 3. Make your changes to the project, to build it, write in cmd: npm run build<br />
 4. To install surge, write in cmd: npm install --global surge<br />
 5. After build, to host on surge, write in cmd: surge --project ./build --domain A_DOMAIN_NAME.surge.sh and fill out form.<br />
+<br /><hr />
+Additional info can be found here: https://docs.google.com/document/d/1GZvVK-dGHjyP30BULhtRz9EFYd9MOzdtChoV6X_mRnQ/edit
