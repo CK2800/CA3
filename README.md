@@ -2,12 +2,15 @@
 
 Start code for exercises, CA-3 and the Semester Project given at cphbusiness.dk - computer science
 
-To use this project, switch to the cloneReady branch after cloning.
+To start from this project, switch to the cloneReady branch after cloning <br />
+OR<br/>
+clone the branch directly: git clone -b fall_2018 --single-branch https://github.com/CK2800/CA3.git
 
-The project consists of a backend part written in Java containing a REST endpoint. 
-The project also contains a front end written in React. This part is found in the CA3/react-ui folder.
+The project contains two parts:<br />
+1. A backend part written in Java containing a REST endpoint.<br /> 
+2. A frontend part written in React. This part is found in the CA3/react-ui folder.
 
-
+<B>Database</B><br />
 To use this project you must create two database schemas, one for local development and one for local integration testing.
 
 To run the backend locally, you must edit the XXpu.properties so it contains:
