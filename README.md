@@ -4,8 +4,8 @@ Start code for exercises, CA-3 and the Semester Project given at cphbusiness.dk 
 
 <B>To start from this project:</B><br />
 Switch to the cloneReady branch after cloning <br />
-- OR -<br/>
-Clone the branch directly: git clone -b fall_2018 --single-branch https://github.com/CK2800/CA3.git
+OR<br/>
+Clone the branch directly: git clone -b cloneReady --single-branch https://github.com/CK2800/CA3.git
 
 <B>The project contains two parts:</B><br />
 1. A backend part written in Java containing a REST endpoint.<br /> 
