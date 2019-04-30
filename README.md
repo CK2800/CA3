@@ -23,9 +23,9 @@ b: your user name and password for the MySql server.
 a: the name of your database schema used for local integration tests. (b)<br />
 b: your user name and password for the MySql server.
 <br /><br />
-Rename the two files - remove XX from file names.
+* Rename the two files - remove XX from file names.
 <br><br>
-To set time zone on MySql server -> sql: SET global time_zone = '+1:00';
+* To set time zone on MySql server i needed -> sql: SET global time_zone = '+1:00';
 <br /><br />
 <B>To use the react-ui, you must open the folder in VS code.</B><br>
 1. If the project does not contain a 'Node_modules' folder, write in cmd:  npm install and npm install react-router-dom<br />
