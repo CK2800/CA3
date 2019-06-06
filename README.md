@@ -5,7 +5,10 @@ Start code for exercises, CA-3 and the Semester Project given at cphbusiness.dk 
 <B>To start from this project:</B><br />
 Switch to the cloneReady branch after cloning <br />
 OR<br/>
-Clone the branch directly: git clone -b cloneReady --single-branch https://github.com/CK2800/CA3.git
+Clone the branch directly: git clone -b cloneReady --single-branch https://github.com/CK2800/CA3.git<br /><br />
+<B>REMEMBER:</B>
+1. To rename the folder after cloning, since the default name will be CA3.
+2. To remove the .git folder and run git init to set up the correct remotes.
 
 <B>The project contains two parts:</B><br />
 1. A backend part written in Java containing a REST endpoint.<br /> 
