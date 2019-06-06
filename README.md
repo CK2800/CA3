@@ -8,7 +8,7 @@ OR<br/>
 Clone the branch directly: git clone -b cloneReady --single-branch https://github.com/CK2800/CA3.git<br /><br />
 <B>REMEMBER:</B>
 1. To rename the folder after cloning, since the default name will be CA3.
-2. To remove the .git folder and run git init to set up the correct remotes.
+2. To remove the .git folder and run git init to set up the correct remotes.<br /><br />
 
 <B>The project contains two parts:</B><br />
 1. A backend part written in Java containing a REST endpoint.<br /> 
