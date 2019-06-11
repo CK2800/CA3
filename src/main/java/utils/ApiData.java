@@ -5,7 +5,9 @@
  */
 package utils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -36,14 +38,32 @@ public class ApiData
         connection.setRequestProperty("User-Agent", "server"); // no need to specify actual device.
         connection.setRequestProperty("Accept", "application/json;charset=UTF-8"); // we want json returned and we understand UTF-8 
         
-        // Read from the input stream of the connection.
-        Scanner scanner = new Scanner(connection.getInputStream());
+        // Create input stream from connection.
+        InputStream is = connection.getInputStream();
+        // Create output stream to write the bytes read from inputstream.
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
         
-        String jsonResult = null;
-        if (scanner.hasNext())
-            jsonResult = scanner.nextLine(); // doable, since the json result is a single line.
-        scanner.close();
-//        System.out.println("JSON Received: " + jsonResult);
-        return jsonResult;
+        // 1. Read from input stream into byte-array.
+        // 2. Write byte array into output stream which grows dynamically.
+        // 3. Reading stops when bytes read (len) is -1, which means EOF or connection closed.
+        int len;
+        byte[] buffer = new byte[4096];
+        while(-1 != (len=is.read(buffer)))
+        {
+            bos.write(buffer, 0, len);
+        }
+        return bos.toString();
+        
+        
+//        // Read from the input stream of the connection.
+//        Scanner scanner = new Scanner(connection.getInputStream());
+//        
+////        String jsonResult = null;
+//        String jsonResult = "";
+//        while (scanner.hasNext())
+//            jsonResult = scanner.nextLine();
+//        scanner.close();
+////        System.out.println("JSON Received: " + jsonResult);
+//        return jsonResult;
     }    
 }
