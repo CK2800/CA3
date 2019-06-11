@@ -10,8 +10,8 @@ Clone the branch directly: git clone -b cloneReady --single-branch https://githu
 1. To rename the folder after cloning, since the default name will be CA3.
 2. To remove the .git folder and run git init to set up the correct remotes.
 3. Rename the project. <br />
-\ta) In netbeans right-click, select 'properties', select 'General' under 'Categories', fill in a new name in the fields 'Artifact Id' and 'Name'.
-\tb) Under 'Categories' select 'Run', fill in a new value in the field 'Context path'. This will also be the path under which the application is deployed with Travis CI.<br /><br />
+a) In netbeans right-click, select 'properties', select 'General' under 'Categories', fill in a new name in the fields 'Artifact Id' and 'Name'.<br />
+b) Under 'Categories' select 'Run', fill in a new value in the field 'Context path'. This will also be the path under which the application is deployed with Travis CI.<br /><br />
 
 
 <B>The project contains two parts:</B><br />
